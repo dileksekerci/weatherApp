@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units&appid=612869ce51bac84b953d4352389df118`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=612869ce51bac84b953d4352389df118`
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -33,17 +33,24 @@ function App() {
             <p>{data.name}</p>
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp.toFixed()}°F</h1> : null}
+            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
           </div>
           <div className="description">
-            {data.weather ? <p>{data.weather[0].main}</p> : null}
+            {data.main ? <p>{data.weather[0].main}</p> : null}
+            {data.main ?
+              <img
+                alt="icon"
+                className="icon"
+                src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+              />
+              : null}
           </div>
         </div>
 
         {data.name !== undefined &&
           <div className="bottom">
             <div className="feels">
-              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
+              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
               <p>Feels Like</p>
             </div>
             <div className="humidity">

@@ -77,9 +77,11 @@ h1 {
 
 .app .description {
   position: relative;
-  right: -90%;
-  transform-origin: 0 0;
-  transform: rotate(269deg);
+  top: 10%;
+}
+
+.app .icon {
+  width: 75px;
 }
 
 .app .bottom {
